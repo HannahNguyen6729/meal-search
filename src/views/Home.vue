@@ -4,7 +4,7 @@
     <input
       type="text"
       class="rounded border-2 border-gray-200 w-full"
-      placeholder="search for meal"
+      placeholder="search for meals"
     />
 
     <p>{{ meals }}</p>
@@ -48,5 +48,8 @@ onMounted(async () => {
 
   ingredients.value = response.data;
   console.log(ingredients.value);
+
+  //Lookup a single random meal
+  //www.themealdb.com/api/json/v1/1/random.php
 });
 </script>
