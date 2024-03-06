@@ -18,12 +18,18 @@
         {{ letter }}
       </router-link>
     </div>
+
+    <div>
+      <prev>{{ ingredients }} </prev>
+    </div>
   </div>
 </template>
 
 <script setup>
-import { computed, watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useStore } from 'vuex';
+import axios from 'axios';
+import { VITE_API_BASE_URL } from '../constants/constants';
 
 const store = useStore();
 
@@ -31,4 +37,16 @@ const meals = computed(() => store.state.meals);
 //console.log({ meals });
 
 const letters = 'A B C D E F G H I J K L M N O P Q R S T U V W X Y Z'.split('');
+
+const ingredients = ref([]);
+
+onMounted(async () => {
+  const response = await axios({
+    method: 'GET',
+    url: `${VITE_API_BASE_URL}/list.php?i=list`,
+  });
+
+  ingredients.value = response.data;
+  console.log(ingredients.value);
+});
 </script>
