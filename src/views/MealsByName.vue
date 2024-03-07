@@ -1,17 +1,17 @@
 <template>
   <div class="p-8 pb-0">
-    <h1 class="text-4xl font-bold mb-4 text-orange-500">
-      Search Meals by Name
-    </h1>
-    <div class="px-8 pb-3">
-      <input
-        v-model="keyword"
-        @change="handleSearchMeal"
-        type="text"
-        placeholder="Search for Meals"
-        class="rounded border-2 bg-white border-gray-200 focus:ring-orange-500 focus:border-orange-500 w-full"
-      />
-      <p>{{ meals?.length }}</p>
+    <h1 class="text-4xl font-bold text-orange-500">Search Meals by Name</h1>
+    <div class="px-8 pb-5">
+      <div class="grid px-8 grid-cols-1">
+        <input
+          v-model="keyword"
+          @change="handleSearchMeal"
+          type="text"
+          placeholder="Search for Meals"
+          class="h-10 my-8 px-2 rounded border-2 bg-white border-gray-200 focus:ring-orange-500 focus:border-orange-500 w-full"
+        />
+      </div>
+
       <div
         v-if="meals?.length > 0"
         class="grid grid-cols-1 md:grid-cols-3 gap-5 px-8"
