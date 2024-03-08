@@ -3,7 +3,9 @@ export default {
     state.searchedMeals = payload;
   },
   searchMealByLetterMutation(state, payload) {
-    console.log(payload);
     state.mealsByLetter = payload;
+  },
+  searchMealByIngredientMutation(state, payload) {
+    state.mealsByIngredient = payload;
   },
 };

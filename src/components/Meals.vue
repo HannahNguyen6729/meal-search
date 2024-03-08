@@ -18,7 +18,7 @@
       <div class="p-3 flex-1">
         <h3 class="font-bold">{{ meal.strMeal }}</h3>
         <p>
-          {{ truncateWords(meal.strInstructions, 200) }}
+          {{ truncateWords(meal.strInstructions || '', 200) }}
         </p>
       </div>
       <div class="px-3 pb-3 flex items-center justify-between">
@@ -38,7 +38,6 @@
 </template>
 
 <script setup>
-import { useRouter } from 'vue-router';
 import { truncateWords } from '../utils/helper';
 
 const props = defineProps({

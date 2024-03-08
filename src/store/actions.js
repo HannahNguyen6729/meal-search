@@ -26,4 +26,16 @@ export default {
     const meals = await handleSearchMeals();
     context.commit('searchMealByLetterMutation', meals);
   },
+  async handleSearchMealByIngredientAction(context, payload) {
+    const handleSearchMeals = async () => {
+      const res = await axios({
+        method: 'GET',
+        url: `${VITE_API_BASE_URL}/filter.php?i=${payload}`,
+      });
+      return res.data.meals;
+    };
+
+    const meals = await handleSearchMeals();
+    context.commit('searchMealByIngredientMutation', meals);
+  },
 };

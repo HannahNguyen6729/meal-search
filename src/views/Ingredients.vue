@@ -14,6 +14,7 @@
         href="#"
         v-for="ingredient of computedIngredients"
         :key="ingredient.idIngredient"
+        @click.prevent="handleSearchMealsByIngredient(ingredient)"
         class="block bg-white rounded p-3 mb-3 shadow"
       >
         <h3 class="text-2xl font-bold mb-2">{{ ingredient.strIngredient }}</h3>
@@ -26,9 +27,12 @@
 import { computed, onMounted, ref } from 'vue';
 import axios from 'axios';
 import { VITE_API_BASE_URL } from '../constants/constants';
+import { useRouter } from 'vue-router';
 
 const keyword = ref('');
 const ingredients = ref([]);
+
+const router = useRouter();
 
 onMounted(() => {
   const fetchIngredients = async () => {
@@ -53,6 +57,10 @@ const computedIngredients = computed(() => {
   }
   return ingredients.value;
 });
+
+const handleSearchMealsByIngredient = (ingredient) => {
+  router.push(`/by-ingredient/${ingredient.strIngredient}`);
+};
 </script>
 
 <style></style>
