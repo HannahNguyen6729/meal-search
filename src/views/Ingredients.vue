@@ -59,7 +59,10 @@ const computedIngredients = computed(() => {
 });
 
 const handleSearchMealsByIngredient = (ingredient) => {
-  router.push(`/by-ingredient/${ingredient.strIngredient}`);
+  router.push({
+    name: 'byIngredient',
+    params: { ingredient: ingredient.strIngredient },
+  });
 };
 </script>
 
